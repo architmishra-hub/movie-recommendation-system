@@ -1,145 +1,107 @@
-#🎬 Movie Recommender System
+# Movie Recommender System
 
-A Machine Learning based Movie Recommendation System that suggests movies to users based on similarity and content filtering techniques.
+A content-based movie recommendation engine that suggests similar movies based on genres, keywords, cast, crew, and plot overview. The system uses natural language processing techniques to analyze movie features and find similarities between films.
 
-📌 Project Overview
+## Overview
 
-This project builds a content-based movie recommender system that suggests movies similar to a selected movie using machine learning techniques.
+This project builds a movie recommender system using the TMDB 5000 dataset. It creates movie "tags" by combining multiple features and uses cosine similarity to find and recommend movies that are most similar to a user's input movie.
 
-The system analyzes movie metadata such as:
+## Features
 
-Genres
+- Content-Based Filtering: Recommends movies based on content similarity rather than user ratings
+- Multi-Feature Analysis: Combines movie overview, genres, keywords, cast, and crew information
+- Text Processing: Implements stemming and vectorization for better text analysis
+- Similarity Scoring: Uses cosine similarity to find the most relevant movie matches
 
-Keywords
+## Technologies Used
 
-Cast
+- Python 3.x
+- Pandas for data manipulation
+- NumPy for numerical operations
+- Scikit-learn for CountVectorizer and cosine similarity
+- NLTK for PorterStemmer text stemming
+- Ast for literal evaluation of JSON parsing
 
-Crew
+## Dataset
 
-Overview
+The project uses two TMDB datasets:
+- tmdb_5000_movies.csv - Contains movie metadata including budget, genres, homepage, id, keywords
+- tmdb_5000_credits.csv - Contains cast and crew information
 
-It then computes similarity between movies and recommends the most relevant ones.
+## Installation
 
-🚀 Features
-
-Content-Based Filtering
-
-Cosine Similarity for recommendation
-
-Data preprocessing & feature engineering
-
-Clean and structured ML pipeline
-
-Easy-to-use recommendation function
-
-(Optional) Streamlit Web App support
-
-🛠️ Tech Stack
-
-Python
-
-Pandas
-
-NumPy
-
-Scikit-learn
-
-NLTK (if used for text preprocessing)
-
-Pickle (for model saving)
-
-Streamlit (if deployed as web app)
-
-📂 Project Structure
-movie-recommender-system/
-│
-├── app.py                 # Streamlit app (if included)
-├── main.ipynb             # Jupyter notebook
-├── movies.csv             # Movie dataset
-├── similarity.pkl         # Saved similarity matrix
-├── movie_list.pkl         # Saved movie list
-└── README.md
-⚙️ How It Works
-
-Data Cleaning & Preprocessing
-
-Remove null values
-
-Extract important features
-
-Feature Engineering
-
-Combine genres, cast, crew, keywords, overview
-
-Create a "tags" column
-
-Text Vectorization
-
-Convert text into vectors using CountVectorizer
-
-Similarity Calculation
-
-Use Cosine Similarity to compute movie similarity
-
-Recommendation
-
-When a movie is selected, top 5 similar movies are returned
-
-📊 Recommendation Function
-
-Example function:
-
-def recommend(movie):
-    movie_index = movies[movies['title'] == movie].index[0]
-    distances = similarity[movie_index]
-    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
-    
-    for i in movies_list:
-        print(movies.iloc[i[0]].title)
-▶️ How to Run the Project
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/movie-recommender-system.git
+1. Clone the repository:
+git clone https://github.com/yourusername/movie-recommender-system.git
 cd movie-recommender-system
-2️⃣ Install Dependencies
-pip install -r requirements.txt
-3️⃣ Run Jupyter Notebook
-jupyter notebook
 
-OR
+2. Install required packages:
+pip install pandas numpy scikit-learn nltk
 
-4️⃣ Run Streamlit App
-streamlit run app.py
-📈 Future Improvements
+3. Download the NLTK data if not already installed:
+import nltk
+nltk.download('punkt')
 
-Collaborative Filtering
+## Usage
 
-Hybrid Recommendation System
+1. Ensure the dataset files are in the same directory as the notebook
+2. Run the Jupyter notebook cells sequentially
+3. Use the recommendation function:
+recommend("batman begins")
 
-Deep Learning based recommendations
+The system will output the top 5 most similar movies.
 
-Deployment on cloud (Render/Heroku/AWS)
+## How It Works
 
-Add movie posters using TMDB API
+### Data Preprocessing
+1. Merges movies and credits datasets on the title column
+2. Selects relevant columns: movie_id, title, overview, genres, keywords, cast, crew
+3. Handles missing values by dropping null entries
 
-🧠 Learning Outcomes
+### Feature Extraction
+- Parses JSON-like strings to extract meaningful text
+- Extracts top 3 cast members
+- Extracts director names from crew data
+- Removes spaces from multi-word entities (e.g., "James Cameron" becomes "JamesCameron")
 
-Text preprocessing
+### Text Processing
+- Converts overview text into word lists
+- Combines all features into a single tags column
+- Applies stemming to reduce words to their root form
+- Uses CountVectorizer to create feature vectors limited to 5000 features
 
-Feature engineering
+### Similarity Calculation
+- Computes cosine similarity between movie vectors
+- Recommends top 5 movies with highest similarity scores
 
-Vectorization techniques
+## Example
 
-Similarity metrics
+Input:
+recommend("batman begins")
 
-Model serialization
+Output:
+the dark knight
+batman
+batman
+the dark knight rises
+10th & wolf
 
-Basic ML deployment
+## Future Improvements
 
-📜 License
+- Add collaborative filtering based on user ratings
+- Implement a web interface using Flask or Streamlit
+- Include more sophisticated NLP techniques such as TF-IDF or word embeddings
+- Add support for filtering by genre or year
+- Optimize for larger datasets
 
-This project is open-source and available under the MIT License.
+## License
 
-🙌 Author
+This project is open source and available under the MIT License.
 
-Archit Mishra
-Feel free to connect and contribute!
+## Acknowledgments
+
+Dataset provided by TMDB (The Movie Database)
+Inspired by various content-based recommendation system tutorials
+
+## Contact
+
+For any queries or suggestions, please open an issue in the GitHub repository.
