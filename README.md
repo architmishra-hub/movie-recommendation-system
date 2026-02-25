@@ -25,8 +25,8 @@ This project builds a movie recommender system using the TMDB 5000 dataset. It c
 ## Dataset
 
 The project uses two TMDB datasets:
-- tmdb_5000_movies.csv - Contains movie metadata including budget, genres, homepage, id, keywords
-- tmdb_5000_credits.csv - Contains cast and crew information
+- [tmdb_5000_movies.csv](https://drive.google.com/file/d/1Xd9zsx6BiMlygL1plrxfQolHCn8-2UxD/view?usp=sharing) - Contains movie metadata including budget, genres, homepage, id, keywords 
+- [tmdb_5000_credits.csv](https://drive.google.com/file/d/1ff2q6rYCkcxQImucbtIGzn8VpN267Uyr/view?usp=drive_link) - Contains cast and crew information
 
 ## Installation
 
