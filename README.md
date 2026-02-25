@@ -79,11 +79,7 @@ Input:
 recommend("batman begins")
 
 Output:
-the dark knight
-batman
-batman
-the dark knight rises
-10th & wolf
+the dark knight, batman, batman, the dark knight rises, 10th & wolf
 
 ## Future Improvements
 
