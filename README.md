@@ -31,7 +31,7 @@ The project uses two TMDB datasets:
 ## Installation
 
 1. Clone the repository:
-git clone https://github.com/yourusername/movie-recommender-system.git
+git clone https://github.com/architmishra-hub/movie-recommender-system.git
 cd movie-recommender-system
 
 2. Install required packages:
